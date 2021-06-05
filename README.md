@@ -15,6 +15,9 @@ To help me code the game I used the following technologies:
 
 ## Getting Started
 
+https://github.com/LadyLioness951/WAR.git
+
+
 ## Next Steps
 
 I plan on adding background music, a voice over when someone loses, and a table under the cards.

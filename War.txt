@@ -1,0 +1,72 @@
+Constants:
+	
+    Players 1, -1, null
+    How to win
+    MasterDeck 
+
+Variables: 
+
+	Status of game
+	Cards
+	Current player
+    player hand
+    computer hand
+
+Cached:
+
+	Play Again button
+	Message 
+	Card Deck
+    WAR
+
+Event Listeners:
+
+	Click, init
+	Click, flip card
+
+Functions:
+	
+	Init
+	Render message - Player Wins!, You're a Loser!, Good Luck!
+    shuffle 
+    split
+    deal
+    Handle flip card deck - once the card is clicked this will invoke the
+                            play function.
+    play - pull one card from each player, compare the cards to see who
+            wins the hand, if player 1 is higher they win if player -1 is
+            higher then they win the hand.
+	Get winner - Whoever has all 52 cards or not enough cards to go to war
+	
+
+
+Have a start button
+    Once the start button is clicked the card deck will get shuffled
+        function shuffle(deck) 
+    Then the deck will be split evenly one at a time to each player (i.e. player then computer back and forth until all cards are dealt)
+        a function to split the cards and then a function to deal the cards.        
+
+Once cards are dealt
+    The players cards need to be set to players hand & 
+    The computers cards need to be set to computers hand   
+        function(play)  
+
+Now that the hands are set
+    Each player will start flipping their cards over one at a time
+    The player with the higher card takes that round
+    if each player flips over a card with the same value (i.e. two 8s)
+    then you go to WAR.
+    each player will lay down 3 cards face down and then a 4th card face up.
+    If the players 4th card is the same then they have another round of WAR
+    However if they are different then the player with the higher card wins the WAR
+        There will be a while loop pushing the cards to the bottom of the players hand
+        A function to compare who's hand wins the rounds.
+        A War function 
+
+When one player has all 52 cards they win
+        There will be a winner function
+
+However if WAR is rendered and one player doesn't have the 4 extra cards 
+needed to go to war then they lose and the game is over
+
+Once game ends a Play Again button will appear.
