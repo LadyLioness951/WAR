@@ -10,6 +10,25 @@
     <script defer src="js/main.js"></script>
 </head>
 <body>
-    <h1>War!</h1>
+    <header>
+        <h1>Get Ready for WAR!</h1>
+        <p id="msg"></p>
+    </header>
+    <main>
+        <div id="board">
+            <div id="Player1" class="Players">
+                <div class="Score"></div>
+                <div class="hand"></div>
+            </div>
+            <div id="Player2" class="Players">
+                <div class="Score"></div>
+                <div class="hand"></div>
+            </div>
+        </div>
+        <div id="master-deck" class="card-holder">Master Deck</div>
+        <div id="shuffled-deck" class="card-holder">Shuffled Deck</div>
+    </main>
+        <button id="start" class="btn">Start Game</button>
+        <button id="replay" class="btn">Play Again</button>
 </body>
 </html>
