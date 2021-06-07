@@ -12,6 +12,12 @@ body {
     height: 100%;
 }
 
+.msg {
+    font-size: 15vmin;
+    background-color: crimson;
+    padding: 5vmin;
+}
+
 .card-holder {
     display: flex;
     flex-wrap: wrap;
