@@ -9,8 +9,11 @@ const masterDeck = buildMasterDeck();
 let shuffledDeck;
 let gameStatus;
 let cards;
-let playerHand;
-let computerHand;
+let player1Hand;
+let player2Hand;
+let pile;
+let player1Deck;
+let player2Deck
 
 /*----- cached element references -----*/
 const msgEl = document.getElementById("msg");
@@ -30,8 +33,10 @@ document.getElementById("board").addEventListener(click, renderCardClick);
 /*----- functions -----*/
 function init() {
     gameStatus = null;
-    const player1Deck = newDeck.splice(0, 26);
-    const player2Deck = newDeck;
+    shuffledDeck = getNewShuffledDeck();
+    player1Deck = shuffledDeck.splice(0, 26);
+    player2Deck = shuffledDeck;
+    
 
     render();
 }
@@ -80,7 +85,7 @@ function buildMasterDeck() {
         deck.push({
           // The 'face' property maps to the library's CSS classes for cards
           face: `${suit}${rank}`,
-          value: []
+          value: Number(rank) || faceValues[J, Q, K, A]
         });
     });
   });
@@ -90,18 +95,21 @@ function buildMasterDeck() {
 renderNewShuffledDeck();
 
 function battle() {
-    if(!gameOver) {
-        let playerHand = players[0].pop;
-        let computerHand = players[1].pop;
-        let pile = [playerHand, computerHand];
-        player1El.innerHTML = showHand(playerHand, 0);
-        player2El.innerHTML = showHand(computerHand, 0);
-        checkWinner(playerHand, computerHand, pile);
-        score1El.innerHTML = players[0].length;
-        score2El.innerHTML = players[1].length;
+    if(!gameStatus) {
+        player1Hand = player1Deck.shift();
+        player2Hand = player2Deck.shift();
+        player1El.innerHTML = showHand(player1Hand, 0);
+        player2El.innerHTML = showHand(player2Hand, 0);
+        checkWinner(player1Hand, player2Hand);
+        score1El.innerHTML = player1Deck.length;
+        score2El.innerHTML = player2Deck.length;
     } else {
-        msgEl === "Game Over!"
+        gameStatus = "Game Over!"
     }
+}
+
+function war() {
+
 }
 
 function howToWin() {
