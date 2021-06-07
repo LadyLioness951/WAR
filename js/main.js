@@ -2,7 +2,7 @@
 const suits = ["d", "s", "h", "c"];
 const ranks = ["02", "03", "04", "05", "06", "07", "08", "09", "10", "J", "Q", "K", "A"];
 const faceValues = {J: 11, Q: 12, K: 13, A: 14};
-const howToWin;
+// const howToWin;
 const masterDeck = buildMasterDeck();
 
 /*----- app's state (variables) -----*/
@@ -11,24 +11,24 @@ let gameStatus;
 let cards;
 let player1Hand;
 let player2Hand;
-let pile;
 let player1Deck;
-let player2Deck
+let player2Deck;
 
 /*----- cached element references -----*/
 const msgEl = document.getElementById("msg");
 const buttonEl = document.getElementById("replay");
 const buttonEls = document.getElementById("start");
-const player1El = document.querySelector("#player1 .hand");
-const player2El = document.querySelector("#player2 .hand");
+const player1El = document.querySelector("#hand1");
+const player2El = document.querySelector("#hand2");
 const score1El = document.querySelector("#player1 .score");
 const score2El = document.querySelector("#player2 .score");
+const deckHolder = document.getElementById("master-deck-holder");
 
 
 /*----- event listeners -----*/
-document.getElementById("replay").addEventListener(click, renderNewShuffledDeck);
-document.getElementById("start").addEventListener(click, renderNewShuffledDeck);
-document.getElementById("board").addEventListener(click, renderCardClick);
+document.getElementById("replay").addEventListener("click", init);
+document.getElementById("start").addEventListener("click", init);
+document.getElementById("board").addEventListener("click", renderCardClick);
 
 /*----- functions -----*/
 function init() {
@@ -36,12 +36,15 @@ function init() {
     shuffledDeck = getNewShuffledDeck();
     player1Deck = shuffledDeck.splice(0, 26);
     player2Deck = shuffledDeck;
-    
+    player1Hand = player1Deck.shift();
+    player2Hand = player2Deck.shift();
 
     render();
 }
 
 function render() {
+    player1El.innerHTML = `<div class="card ${player1Hand.face}"></div>`;
+    player2El.innerHTML = `<div class="card ${player2Hand.face}"></div>`;
     buttonEl.style.visibility = gameStatus ? "hidden" : "visible";
     buttonEls.style.visibility = gameStatus ? "visible" : "hidden";
 
@@ -73,10 +76,6 @@ function getNewShuffledDeck() {
     return newShuffledDeck;
   }
 
-function renderNewShuffledDeck() {
-    shuffledDeck = getNewShuffledDeck();
-}
-
 function buildMasterDeck() {
     const deck = [];
     // Use nested forEach to generate card objects
@@ -85,14 +84,12 @@ function buildMasterDeck() {
         deck.push({
           // The 'face' property maps to the library's CSS classes for cards
           face: `${suit}${rank}`,
-          value: Number(rank) || faceValues[J, Q, K, A]
+          value: Number(rank) || faceValues[rank]
         });
     });
   });
   return deck;
 }
-
-renderNewShuffledDeck();
 
 function battle() {
     if(!gameStatus) {

@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    background-color: black;
 }
 
 header {
@@ -12,9 +13,13 @@ body {
     height: 100%;
 }
 
+#score {
+    color: blue
+}
+
 .msg {
     font-size: 15vmin;
-    background-color: crimson;
+    background-color: blue;
     padding: 5vmin;
 }
 
@@ -30,7 +35,6 @@ body {
     color: black;
     background: blue;
     border-radius: 50%;
-
 }
 
 .btn:hover {
