@@ -16,7 +16,7 @@ To help me code the game I used the following technologies:
 
 ## Getting Started
 
-https://github.com/LadyLioness951/WAR.git
+https://LadyLioness951.github.io/WAR/
 
 ## Next Steps
 
