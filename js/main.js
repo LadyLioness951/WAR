@@ -126,6 +126,7 @@ function war() {
    }
 }
 
+
 function showHand() {
 
 }
