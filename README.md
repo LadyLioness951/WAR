@@ -12,12 +12,12 @@ To help me code the game I used the following technologies:
 * HTML
 * CSS
 * JavaScript
+* CSS Cardstarter Library
 
 ## Getting Started
 
 https://github.com/LadyLioness951/WAR.git
 
-
 ## Next Steps
 
-I plan on adding background music, a voice over when someone loses, and a table under the cards.
+I plan on adding background music, a voice over when someone loses, each players deck showing, and a table under the cards.
