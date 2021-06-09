@@ -39,7 +39,7 @@ body {
 }
 
 .btn:hover {
-    background-color: maroon;
+    background-color: lightskyblue;
 }
 
 .card {
@@ -48,11 +48,40 @@ body {
 
 .players {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+#deck1 {
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+section {
+    display: flex;
+    margin: 2vmin;
+    gap: 4vmin;
+}
+.card {
+    margin-left: 2vmin;
+}
+
 #deck1-count, #deck2-count, #hand1-count, #hand2-count  {
-    color: whitesmoke;
+    font-size: 2vmin;
+    font-weight: bold;
+    color: black;
+    text-shadow: 1.5px 1.5px blue;
+}
+
+aside {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: initial;
+    margin: 0, 2px;
+    padding-top: 2vmin;
+    font-size: 2vmin;
+    color: black;
     text-shadow: 1px 1px blue;
 }

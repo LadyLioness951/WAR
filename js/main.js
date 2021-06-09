@@ -34,6 +34,14 @@ const hand1countEl = document.getElementById("hand1-count");
 const hand2countEl = document.getElementById("hand2-count");
 const hand1El = document.getElementById("hand1");
 const hand2El = document.getElementById("hand2");
+const bgInkWell = document.getElementById("bg-inkwell");
+const bgAllyWay = document.getElementById("bg-allyway");
+const bgStareDown = document.getElementById("bg-staredown");
+const bgNoFace = document.getElementById("bg-noface");
+const iwCheckbox = document.getElementById("iw")
+const awCheckbox = document.getElementById("aw")
+const sdCheckbox = document.getElementById("sd")
+const nfCheckbox = document.getElementById("nf")
 
 
 /*----- event listeners -----*/
@@ -41,6 +49,10 @@ battleBtn.addEventListener("click", handleBattle);
 replayBtn.addEventListener("click", init);
 readyBtn.addEventListener("click", handleReady);
 warBtn.addEventListener("click", handleWar);
+iwCheckbox.addEventListener("change", handleBgMusicIwChange);
+awCheckbox.addEventListener("change", handleBgMusicAwChange);
+sdCheckbox.addEventListener("change", handleBgMusicSdChange);
+nfCheckbox.addEventListener("change", handleBgMusicNfChange);
 
 /*----- functions -----*/
 init();
@@ -56,14 +68,32 @@ function init() {
 }
 
 function render() {
-    hand1El.innerHTML = player1Hand.length ? `<div class="card ${player1Hand[0].face}"></div>` : "";
-    hand2El.innerHTML = player2Hand.length ? `<div class="card ${player2Hand[0].face}"></div>` : "";
+    if (player1Hand.length > 1) {
+        let template1 = "";
+        player1Hand.forEach(card => {
+            template1 += `<div class="card ${card.face}"></div>`;
+        })
+        hand1El.innerHTML = template1
+    } else {
+        hand1El.innerHTML = player1Hand.length ? `<div class="card ${player1Hand[0].face}"></div>` : "";
+    }
+
+    if (player2Hand.length > 1) {
+        let template2 = "";
+        player2Hand.forEach(card => {
+            template2 += `<div class="card ${card.face}"></div>`;
+        })
+        hand2El.innerHTML = template2
+    } else {
+        hand2El.innerHTML = player2Hand.length ? `<div class="card ${player2Hand[0].face}"></div>` : "";
+    }
+
     deck1El.innerHTML = player1Deck.length ? '<div class="card back"></div>' : "";
     deck2El.innerHTML = player2Deck.length ? '<div class="card back"></div>' : "";
-    deck1countEl.textContent = player1Deck.length; 
-    deck2countEl.textContent = player2Deck.length; 
-    hand1countEl.textContent = player1Hand.length; 
-    hand2countEl.textContent = player2Hand.length; 
+    deck1countEl.textContent = `Cards: ${player1Deck.length}`; 
+    deck2countEl.textContent = `Cards: ${player2Deck.length}`; 
+    hand1countEl.textContent = `Pile: ${player1Hand.length}`; 
+    hand2countEl.textContent = `Pile: ${player2Hand.length}`; 
     renderMessage();
     renderButtons();
 }
@@ -136,6 +166,22 @@ function handleWar() {
         }
     }
     render();
+}
+
+function handleBgMusicIwChange() {
+    iwCheckbox.checked ? bgInkWell.play() : bgInkWell.pause();
+}
+
+function handleBgMusicAwChange() {
+    awCheckbox.checked ? bgAllyWay.play() : bgAllyWay.pause();
+}
+
+function handleBgMusicSdChange() {
+    sdCheckbox.checked ? bgStareDown.play() : bgStareDown.pause();
+}
+
+function handleBgMusicNfChange() {
+    nfCheckbox.checked ? bgNoFace.play() : bgNoFace.pause();
 }
 
 function getNewShuffledDeck() {

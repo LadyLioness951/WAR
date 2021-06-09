@@ -17,16 +17,24 @@
     <main>
         <div id="board">
             <div id="player1" class="players">
-                <div id="deck1-count"></div>
-                <div id="deck1"></div>
-                <div id="hand1-count"></div>
-                <div id="hand1"></div>
+                <section>
+                    <div id="deck1-count">Cards:</div>
+                    <div id="hand1-count">Pile:</div>
+                </section>
+                <section>
+                    <div id="deck1"></div>
+                    <div id="hand1"></div>
+                </section>
             </div>
             <div id="player2" class="players">
-                <div id="deck2-count"></div>
-                <div id="deck2"></div>
-                <div id="hand2-count"></div>
-                <div id="hand2"></div>
+                <section>
+                    <div id="deck2-count">Cards:</div>
+                    <div id="hand2-count">Pile:</div>
+                </section>
+                <section>
+                    <div id="deck2"></div>
+                    <div id="hand2"></div>
+                </section>
             </div>
         </div>
     </main>
@@ -34,5 +42,15 @@
     <button id="replay" class="btn">Play Again</button>
     <button id="ready" class="btn">Prepare for Battle</button>
     <button id="war" class="btn">Go to WAR!</button>
+    <aside>
+        <input id="iw" type="checkbox">Play Inkwell Background Music
+        <audio id="bg-inkwell" src="https://freesound.org/data/previews/575/575257_12984470-lq.mp3" loop></audio>
+        <input id="aw" type="checkbox">Play Ally Way Background Music
+        <audio id="bg-allyway" src="https://freesound.org/data/previews/575/575258_12984470-lq.mp3" loop></audio>
+        <input id="sd" type="checkbox">Play Stare Down Background Music
+        <audio id="bg-staredown" src="https://freesound.org/data/previews/575/575256_12984470-lq.mp3" loop></audio>
+        <input id="nf" type="checkbox">Play No Face Background Music
+        <audio id="bg-noface" src="https://freesound.org/data/previews/575/575259_12984470-lq.mp3" loop></audio>
+    </aside>
 </body>
 </html>
