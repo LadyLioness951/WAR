@@ -47,3 +47,13 @@ body {
 .btn:hover {
     background-color: maroon;
 }
+
+.card {
+    transform: scale(1.5);
+}
+
+.players {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

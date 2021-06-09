@@ -3,9 +3,18 @@ const suits = ["d", "s", "h", "c"];
 const ranks = ["02", "03", "04", "05", "06", "07", "08", "09", "10", "J", "Q", "K", "A"];
 const faceValues = {J: 11, Q: 12, K: 13, A: 14};
 const masterDeck = buildMasterDeck();
+const status = {
+    readyToBattle: 0, 
+    gameOver: 1,
+    battleDone: 2,
+    goToWar: 3,
+    warDone: 4,
+    notEnoughCards: 5
+};
 
 /*----- app's state (variables) -----*/
 let gameStatus;
+let winner;
 let player1Hand;
 let player2Hand;
 let player1Deck;
@@ -14,22 +23,30 @@ let player2Deck;
 /*----- cached element references -----*/
 const msgEl = document.getElementById("msg");
 const battleBtn = document.getElementById("battle");
-const deck1countEl = document.getElementById("deck1-count")
-const deck2countEl = document.getElementById("deck2-count")
-const deck1El = document.getElementById("deck1")
-const deck2El = document.getElementById("deck2")
-const hand1countEl = document.getElementById("hand1-count")
-const hand2countEl = document.getElementById("hand2-count")
+const replayBtn = document.getElementById("replay");
+const readyBtn = document.getElementById("ready");
+const warBtn = document.getElementById("war");
+const deck1countEl = document.getElementById("deck1-count");
+const deck2countEl = document.getElementById("deck2-count");
+const deck1El = document.getElementById("deck1");
+const deck2El = document.getElementById("deck2");
+const hand1countEl = document.getElementById("hand1-count");
+const hand2countEl = document.getElementById("hand2-count");
 const hand1El = document.getElementById("hand1");
 const hand2El = document.getElementById("hand2");
 
 
 /*----- event listeners -----*/
 battleBtn.addEventListener("click", handleBattle);
+replayBtn.addEventListener("click", init);
+readyBtn.addEventListener("click", handleReady);
+warBtn.addEventListener("click", handleWar);
 
 /*----- functions -----*/
+init();
+
 function init() {
-    gameStatus = null;
+    gameStatus = status.readyToBattle;
     let shuffledDeck = getNewShuffledDeck();
     player1Deck = shuffledDeck.splice(0, 26);
     player2Deck = shuffledDeck;
@@ -39,23 +56,86 @@ function init() {
 }
 
 function render() {
-    hand1countEl.innerHTML = player1Hand.length ? `<div class="card ${player1Hand[0].face}"></div>` : "";
-    hand2countEl.innerHTML = player2Hand.length ? `<div class="card ${player2Hand[0].face}"></div>` : "";
-    buttonEl.style.visibility = gameStatus ? "hidden" : "visible";
-    buttonEls.style.visibility = gameStatus ? "visible" : "hidden";
-
+    hand1El.innerHTML = player1Hand.length ? `<div class="card ${player1Hand[0].face}"></div>` : "";
+    hand2El.innerHTML = player2Hand.length ? `<div class="card ${player2Hand[0].face}"></div>` : "";
+    deck1El.innerHTML = player1Deck.length ? '<div class="card back"></div>' : "";
+    deck2El.innerHTML = player2Deck.length ? '<div class="card back"></div>' : "";
+    deck1countEl.textContent = player1Deck.length; 
+    deck2countEl.textContent = player2Deck.length; 
+    hand1countEl.textContent = player1Hand.length; 
+    hand2countEl.textContent = player2Hand.length; 
     renderMessage();
-    renderCardClick();
+    renderButtons();
+}
+
+function renderButtons() {
+    readyBtn.style.display = gameStatus === status.battleDone || gameStatus === status.warDone ? "inline-block" : "none";
+    replayBtn.style.display = gameStatus === status.gameOver || gameStatus === status.notEnoughCards ? "inline-block" : "none";
+    battleBtn.style.display = gameStatus === status.readyToBattle ? "inline-block" : "none";
+    warBtn.style.display = gameStatus === status.goToWar ? "inline-block" : "none";
+
 }
 
 function renderMessage() {
-    if(gameStatus === "lose") {
-        msgEl.innerText = "You Lose!";
-    } else if(gameStatus === "win") {
-        msgEl.innerText = "WINNER!";
+    if (gameStatus === status.battleDone) {
+        msgEl.innerText = `Player ${winner} Wins!`;
+    } else if (gameStatus === status.gameOver) {
+        msgEl.innerText = `Player ${winner} Wins the Game!`;
+    } else if (gameStatus === status.readyToBattle) {
+        msgEl.innerText = "Ready to Battle";
+    } else if (gameStatus === status.goToWar) {
+        msgEl.innerText = "Going to WAR!";
+    } else if (gameStatus === status.notEnoughCards) {
+        msgEl.innerText = `Not Enought Cards - Player ${winner} Wins!`;
     } else {
-        msgEl.innerText = "Good Luck!";
+        msgEl.innerText = `Player ${winner} Wins the WAR!`;
     }
+}
+
+function handleBattle() {
+    player1Hand.unshift(player1Deck.shift());
+    player2Hand.unshift(player2Deck.shift());  
+    if (player1Hand[0].value === player2Hand[0].value) {
+        gameStatus = status.goToWar;
+    } else {
+        gameStatus = status.battleDone;
+        winner = player1Hand[0].value > player2Hand[0].value ? 1 : 2;
+    }
+    render();
+}
+
+function handleReady() {
+    const winningDeck = winner === 1 ? player1Deck : player2Deck;
+    winningDeck.push(...player1Hand);
+    winningDeck.push(...player2Hand);
+    player1Hand = [];
+    player2Hand = [];
+    if (player1Deck.length === 52 || player2Deck.length === 52) {
+        gameStatus = status.gameOver;
+    } else {
+        gameStatus = status.readyToBattle;
+    }
+    render();
+}
+
+function handleWar() {
+    if (player1Deck.length < 4) {
+        gameStatus = status.notEnoughCards;
+        winner = 2;
+    } else if (player2Deck.length < 4) {
+        gameStatus = status.notEnoughCards;
+        winner = 1;
+    } else {
+        player1Hand.unshift(...player1Deck.splice(0, 4));
+        player2Hand.unshift(...player2Deck.splice(0, 4));
+        if (player1Hand[0].value === player2Hand[0].value) {
+            gameStatus = status.goToWar;
+        } else {
+            gameStatus = status.warDone;
+            winner = player1Hand[0].value > player2Hand[0].value ? 1 : 2;
+        }
+    }
+    render();
 }
 
 function getNewShuffledDeck() {
@@ -81,42 +161,5 @@ function buildMasterDeck() {
     });
   });
   return deck;
-}
-
-function handleBattle() {
-    if(!gameStatus) {
-        player1Hand = player1Deck.shift();
-        player2Hand = player2Deck.shift();
-        player1El.innerHTML = showHand(player1Hand, 0);
-        player2El.innerHTML = showHand(player2Hand, 0);
-        howToWin();
-        score1El.innerHTML = player1Deck.length;
-        score2El.innerHTML = player2Deck.length;
-    } else {
-        gameStatus = "Game Over!"
-    }
-}
-
-function howToWin() {
-    if(player1Hand.ranks > player2Hand.ranks) {
-        gameStatus = "Player 1 Wins!";
-    } else if(player1Hand.ranks < player2Hand.ranks) {
-        gameStatus = "Player 2 Wins!";
-    } else {
-        war();
-        gameStatus = "Time for War!";
-    }
-}
-
-function war() {
-   if(player1Hand.value === player2Hand.value) {
-       let pile1 = player1Deck.splice(0, 4); 
-       let pile2 = player2Deck.splice(0, 4);
-   }
-   return war;
-}
-
-function showHand() {
-
 }
 
