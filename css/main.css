@@ -5,18 +5,18 @@
 header {
     text-align: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: whitesmoke;
-    
+    color: whitesmoke;    
 }
 
 h1 {
+    margin: 0;
     font-size: 8vmin;
     text-shadow: 5px 5px blue;
 }
 
 p {
-    margin: 0;
     font-size: 5vmin;
+    text-shadow: 3px 3px blue;
 }
 
 body {
@@ -28,12 +28,6 @@ body {
     background-image: url("https://i.imgur.com/75eMSLB.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-}
-
-.card-holder {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
 }
 
 .btn {
@@ -56,4 +50,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#deck1-count, #deck2-count, #hand1-count, #hand2-count  {
+    color: whitesmoke;
+    text-shadow: 1px 1px blue;
 }
