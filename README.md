@@ -6,10 +6,10 @@ War is a two player game. It's a race to see who can get all 52 cards first and 
 
 ## Screenshot(s)
 
-![Go to Battle](https://i.imgur.com/E7kmeml.png)
-![Prepare for Battle](https://i.imgur.com/g1yhKyw.png)
-![Go to WAR](https://i.imgur.com/p5Fb1sg.png)
-![Prepare for Battle after WAR](https://i.imgur.com/lDWekkl.png)
+![Go to Battle](https://i.imgur.com/xLfLKLS.png)
+![Prepare for Battle](https://i.imgur.com/Fqftsdz.png)
+![Go to WAR](https://i.imgur.com/1CcauJw.png)
+![Prepare for Battle after WAR](https://i.imgur.com/ehpJZ4E.png)
 
 ## Technology Used
 
