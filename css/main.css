@@ -35,7 +35,7 @@ body {
     color: whitesmoke;
     background: blue;
     border-radius: 50%;
-    border-color: black;
+    border-color: turquoise;
 }
 
 .btn:hover {
@@ -70,8 +70,8 @@ section {
 #deck1-count, #deck2-count, #hand1-count, #hand2-count  {
     font-size: 2vmin;
     font-weight: bold;
-    color: black;
-    text-shadow: 1.5px 1.5px blue;
+    color: turquoise;
+    text-shadow: 1.5px 1.5px black;
 }
 
 aside {
@@ -82,6 +82,6 @@ aside {
     margin: 0, 2px;
     padding-top: 2vmin;
     font-size: 2vmin;
-    color: black;
+    color: turquoise;
     text-shadow: 1px 1px blue;
 }

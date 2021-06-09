@@ -6,10 +6,10 @@ War is a two player game. It's a race to see who can get all 52 cards first and 
 
 ## Screenshot(s)
 
-![Go to Battle](https://i.imgur.com/E7kmemlt.png)
-![Prepare for Battle](https://i.imgur.com/g1yhKywt.png)
-![Go to WAR](https://i.imgur.com/p5Fb1sgt.png)
-![Prepare for Battle after WAR](https://i.imgur.com/lDWekklt.png)
+![Go to Battle](https://i.imgur.com/E7kmeml.png)
+![Prepare for Battle](https://i.imgur.com/g1yhKyw.png)
+![Go to WAR](https://i.imgur.com/p5Fb1sg.png)
+![Prepare for Battle after WAR](https://i.imgur.com/lDWekkl.png)
 
 ## Technology Used
 
@@ -28,4 +28,4 @@ Have fun enjoy the background music.
 
 ## Next Steps
 
-I plan on adding confetti when the game is over, adding a sound effect say Get Ready for WAR! along with the h1 WAR! bouncing around while the voice is talking.
+I plan on adding confetti when the game is over, a sound effect say Get Ready for WAR! along with the h1 WAR! bouncing around while the voice is talking. I also want to highlight the winning card when WAR is rendered. 
