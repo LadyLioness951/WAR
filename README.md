@@ -28,4 +28,4 @@ Have fun and enjoy the background music while trying to win the card game of WAR
 
 ## Next Steps
 
-I plan on adding confetti when the game is over, a sound effect saying Get Ready for WAR! I also want to highlight the winning card when WAR is rendered. 
+I plan on adding confetti when the game is over, a sound effect saying Get Ready for WAR! 
