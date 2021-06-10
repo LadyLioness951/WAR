@@ -9,6 +9,8 @@ header {
 }
 
 h1 {
+    animation: rollIn;
+    animation-duration: 4s;
     margin: 0;
     font-size: 8vmin;
     text-shadow: 5px 5px blue;
