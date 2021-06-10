@@ -70,8 +70,8 @@ function init() {
 function render() {
     if (player1Hand.length > 1) {
         let template1 = "";
-        player1Hand.forEach(card => {
-            template1 += `<div class="card ${card.face}"></div>`;
+        player1Hand.forEach((card, idx) => {
+            template1 += `<div class="card ${card.face} ${idx === 0 ? "shadow" : ""}"></div>`;
         })
         hand1El.innerHTML = template1
     } else {
@@ -80,8 +80,8 @@ function render() {
 
     if (player2Hand.length > 1) {
         let template2 = "";
-        player2Hand.forEach(card => {
-            template2 += `<div class="card ${card.face}"></div>`;
+        player2Hand.forEach((card, idx) => {
+            template2 += `<div class="card ${card.face} ${idx === 0 ? "shadow" : ""}"></div>`;
         })
         hand2El.innerHTML = template2
     } else {

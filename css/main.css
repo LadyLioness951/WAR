@@ -45,7 +45,7 @@ body {
 }
 
 .card {
-    transform: scale(1.5);
+    transform: scale(1.8);
 }
 
 .players {
@@ -86,4 +86,8 @@ aside {
     font-size: 2vmin;
     color: turquoise;
     text-shadow: 1px 1px blue;
+}
+
+.shadow {
+    border: 5px ridge mediumblue;
 }

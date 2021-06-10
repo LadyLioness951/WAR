@@ -22,10 +22,10 @@ To help me code the game I used the following technologies:
 
 ## Getting Started
 
-https://LadyLioness951.github.io/WAR/
+[Play WAR by clicking this link](https://LadyLioness951.github.io/WAR/)
 
-Have fun enjoy the background music.
+Have fun and enjoy the background music while trying to win the card game of WAR.
 
 ## Next Steps
 
-I plan on adding confetti when the game is over, a sound effect say Get Ready for WAR! along with the h1 WAR! bouncing around while the voice is talking. I also want to highlight the winning card when WAR is rendered. 
+I plan on adding confetti when the game is over, a sound effect saying Get Ready for WAR! I also want to highlight the winning card when WAR is rendered. 
